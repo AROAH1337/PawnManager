@@ -167,15 +167,11 @@ namespace PawnManager
         {
             try
             {
-                WebClient client = new WebClient();
-                string result = client.DownloadString(ConfigURL);
-
-                XElement updateConfig = XElement.Parse(result);
-                int? version = GetConfigVersion(updateConfig);
-                if (version.HasValue && version.Value > configFileVersion)
-                {
-                    PendingUpdatedConfig = updateConfig;
-                }
+                MessageBox.Show(
+                        ex.Message,
+                        "Nah fam this update shit is broken",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
             }
             catch (WebException ex)
             {
